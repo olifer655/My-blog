@@ -138,30 +138,30 @@ localstorge另一个浏览上下文里被添加、修改或删除时，它都会
 （一）
 	div {
     	position: absolute;     /* 相对定位或绝对定位均可 */
-    	width:500px;
+    	width:500px; 
     	height:300px;
     	top: 50%;
     	left: 50%;
     	transform: translate(-50%, -50%);
 	}
-
+	
 （二）
 	div {
     	position: relative;     /* 相对定位或绝对定位均可 */
-    	width:500px;
+    	width:500px; 
     	height:300px;
     	top: 50%;
     	left: 50%;
     	margin: -150px 0 0 -250px;      /* 外边距为自身宽高的一半 */
   	}
-
+	
 （三）
 	.container {
-    	display: flex;
+    	display: flex; 
     	align-items: center;        /* 垂直居中 */
     	justify-content: center;    /* 水平居中 */
 	}
-
+	
 	.container div {
     	width: 100px;
     	height: 100px;
@@ -232,16 +232,16 @@ W3C CSS 2.1 规范中的一个概念,它是一个独立容器，决定了元素�
 * 如何修改chrome记住密码后自动填充表单的黄色背景 ？
 
 ```
-input:autofill,
-textarea:autofill,
+input:autofill, 
+textarea:autofill, 
 select:autofill {
-  background-color: rgb(250, 255, 189);
+  background-color: rgb(250, 255, 189); 
   background-image: none;
   color: rgb(0, 0, 0);
 }
 ```
 * 你对line-height是如何理解的？
-
+ 
 [segmentfault](https://segmentfault.com/a/1190000003038583)
 
 * 设置元素浮动后，该元素的display值是多少？
@@ -287,10 +287,10 @@ fixed的元素是相对整个页面固定位置的，你在屏幕上滑动只是
 
 ```
 目前最简单的方式：
-.clearfix{
-  overflow: auto;
+.clearfix{ 
+  overflow: auto; 
   zoom: 1;   // 处理IE兼容性问题
-}
+} 
 二:
 .clearfix {
   zoom: 1;
@@ -310,7 +310,7 @@ fixed的元素是相对整个页面固定位置的，你在屏幕上滑动只是
 ```
  Undefined、Null、Boolean、Number、String、
  ECMAScript 2015 新增:Symbol(创建后独一无二且不可变的数据类型 )
-
+ 
 ```
 * 介绍js有哪些内置对象？
 
@@ -370,6 +370,7 @@ function commafy(num){
 4、拷贝继承
 
 原型prototype机制或apply和call方法去实现较简单，建议使用构造函数与原型混合方式。
+例如：Object.prototype.toString.call(param).slice(8, -1) !== 'Object'
 
 function Parent(){
   this.name = 'wang';
@@ -386,50 +387,262 @@ alert(demo.name);//得到被继承的属性
 
 
 ```
-*
+* 谈谈This对象的理解
+
+	* this总是指向函数的直接调用者（而非间接调用者）；
+	* 如果有new关键字，this指向new出来的那个对象；
+	* 在事件中，this指向触发这个事件的对象，特殊的是，IE中的attachEvent中的this总是指向全局对象Window；
+
+* eval是做什么的？
+
+```
+它的功能是把对应的字符串解析成JS代码并运行；
+应该避免使用eval，不安全，非常耗性能（2次，一次解析成js语句，一次执行）。
+由JSON字符串转换为JSON对象的时候可以用eval，var obj =eval('('+ str +')');
+
+```
+* 什么是window对象? 什么是document对象?
+
+```
+window对象是指浏览器打开的窗口。
+document对象是Documentd对象（HTML 文档对象）的一个只读引用，window对象的一个属性。
+
+```
+* null，undefined 的区别？
+
+```
+null        表示一个对象是“没有值”的值，也就是值为“空”；
+undefined   表示一个变量声明了没有初始化(赋值)；
+
+undefined不是一个有效的JSON，而null是；
+undefined的类型(typeof)是undefined；
+null的类型(typeof)是object；
+
+
+Javascript将未赋值的变量默认值设为undefined；
+Javascript从来不会将变量设为null。它是用来让程序员表明某个用var声明的变量时没有值的。
+
+typeof undefined
+    //"undefined"
+    undefined :是一个表示"无"的原始值或者说表示"缺少值"，就是此处应该有一个值，但是还没有定义。当尝试读取时会返回 undefined； 
+    例如变量被声明了，但没有赋值时，就等于undefined
+
+typeof null
+    //"object"
+    null : 是一个对象(空对象, 没有任何属性和方法)；
+    例如作为函数的参数，表示该函数的参数不是对象；
+
+注意：
+    在验证null时，一定要使用　=== ，因为 == 无法分别 null 和　undefined
+    null == undefined // true
+    null === undefined // false
+
+再来一个例子：
+
+    null
+    Q：有张三这个人么？
+    A：有！
+    Q：张三有房子么？
+    A：没有！
+
+    undefined
+    Q：有张三这个人么？
+    A：有！
+    Q: 张三有多少岁？
+    A: 不知道（没有被告诉）
+
+```
+* IE与火狐的事件机制有什么区别？ 如何阻止冒泡？
+
+	* 事件处理机制：IE是事件冒泡、Firefox同时支持捕获型和冒泡型两种事件模型；
+	* ev.stopPropagation();（旧ie的方法 ev.cancelBubble = true;）
+	
+* new操作符具体干了什么呢?
+
+```
+1、创建一个空对象，并且 this 变量引用该对象，同时还继承了该函数的原型。
+2、属性和方法被加入到 this 引用的对象中。
+3、新创建的对象由 this 所引用，并且最后隐式的返回 this 。
+
+var obj  = {};
+obj.__proto__ = Base.prototype;
+Base.call(obj);
+
+```
+* Javascript中，有一个函数，执行时对象查找时，永远不会去查找原型
+
+```
+hasOwnProperty
+
+javaScript中hasOwnProperty函数方法是返回一个布尔值，指出一个对象是否具有指定名称的属性。此方法无法检查该对象的原型链中是否具有该属性；该属性必须是对象本身的一个成员。
+使用方法：
+object.hasOwnProperty(proName)
+其中参数object是必选项。一个对象的实例。
+proName是必选项。一个属性名称的字符串值。
+
+如果 object 具有指定名称的属性，那么JavaScript中hasOwnProperty函数方法返回 true，反之则返回 false。
+
+```
+* JSON 的了解？
+
+```
+JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。
+它是基于JavaScript的一个子集。数据格式简单, 易于读写, 占用带宽小
+如：{"age":"12", "name":"back"}
+
+JSON字符串转换为JSON对象:
+var obj =eval('('+ str +')');
+var obj = str.parseJSON();
+var obj = JSON.parse(str);
+
+JSON对象转换为JSON字符串：
+var last=obj.toJSONString();
+var last=JSON.stringify(obj);
+
+```
+* js延迟加载的方式有哪些？
+
+```
+defer和async、动态创建DOM方式（用得最多）、按需异步载入js
+
+```
+* 如何解决跨域问题?
+
+```
+jsonp、 iframe、window.name、window.postMessage、服务器上设置代理页面、cors
+
+```
+* documen.write和 innerHTML的区别
+
+```
+document.write只能重绘整个页面
+
+innerHTML可以重绘页面的一部分
+
+```
+* DOM操作——怎样添加、移除、移动、复制、创建和查找节点?
+
+```
+（1）创建新节点
+  createDocumentFragment()    //创建一个DOM片段
+  createElement()   //创建一个具体的元素
+  createTextNode()   //创建一个文本节点
+（2）添加、移除、替换、插入
+  appendChild()
+  removeChild()
+  replaceChild()
+  insertBefore() //在已有的子节点前插入一个新的子节点
+（3）查找
+  getElementsByTagName()    //通过标签名称
+  getElementsByName()    //通过元素的Name属性的值(IE容错能力较强，会得到一个数组，其中包括id等于name值的)
+  getElementById()    //通过元素Id，唯一性
+
+```
+* AMD（Modules/Asynchronous-Definition）、CMD（Common Module Definition）规范区别？
 
 ```
 
 ```
-*
+* requireJS的核心原理是什么？（如何动态加载的？如何避免多次加载的？如何 缓存的？）
+* 参考：http://annn.me/how-to-realize-cmd-loader/
 
 ```
+
+```
+* ECMAScript6 怎么写class么，为什么会出现class这种东西?
+
+```
+
+```
+* Object.is() 与原来的比较操作符“ ===”、“ ==”的区别？
+
+```
+两等号判等，会在比较时进行类型转换；
+三等号判等(判断严格)，比较时不进行隐式类型转换,（类型不同则会返回false）； 
+
+Object.is 在三等号判等的基础上特别处理了 NaN 、-0 和 +0 ，保证 -0 和 +0 不再相同，
+但 Object.is(NaN, NaN) 会返回 true.
+
+Object.is 应被认为有其特殊的用途，而不能用它认为它比其它的相等对比更宽松或严格。
 
 ```
 <h2 id="其他">其他</h2>
 
-*
+* 设计模式 知道什么是singleton, factory, strategy, decrator么?
 
 ```
 
 ```
-*
+* 页面重构怎么操作？
 
 ```
+网站重构：在不改变外部行为的前提下，简化结构、添加可读性，而在网站前端保持一致的行为。
+也就是说是在不改变UI的情况下，对网站进行优化，在扩展的同时保持一致的UI。
+
+对于传统的网站来说重构通常是：
+
+表格(table)布局改为DIV+CSS
+使网站前端兼容于现代浏览器(针对于不合规范的CSS、如对IE6有效的)
+对于移动平台的优化
+针对于SEO进行优化
+深层次的网站重构应该考虑的方面
+
+减少代码间的耦合
+让代码保持弹性
+严格按规范编写代码
+设计可扩展的API
+代替旧有的框架、语言(如VB)
+增强用户体验
+通常来说对于速度的优化也包含在重构中
+
+压缩JS、CSS、image等前端资源(通常是由服务器来解决)
+程序的性能优化(如数据读写)
+采用CDN来加速资源加载
+对于JS DOM的优化
+HTTP服务器的文件缓存
 
 ```
-*
+* 是否了解公钥加密和私钥加密。
 
 ```
+一般情况下是指私钥用于对数据进行签名，公钥用于对签名进行验证;
+HTTP网站在浏览器端用公钥加密敏感数据，然后在服务器端再用私钥解密。
 
 ```
-*
+* WEB应用从服务器主动推送Data到客户端有那些方式？
 
 ```
+tml5提供的Websocket
+不可见的iframe
+WebSocket通过Flash
+XHR长时间连接
+XHR Multipart Streaming
+<script>标签的长时间连接(可跨域)
 
 ```
-*
+* 一个页面从输入 URL 到页面加载显示完成，这个过程中都发生了什么？（流程说的越详细越好）
 
 ```
+注：这题胜在区分度高，知识点覆盖广，再不懂的人，也能答出几句，
+  而高手可以根据自己擅长的领域自由发挥，从URL规范、HTTP协议、DNS、CDN、数据库查询、
+  到浏览器流式解析、CSS规则构建、layout、paint、onload/domready、JS执行、JS API绑定等等；
 
-```
-*
+  详细版：
+    1、浏览器会开启一个线程来处理这个请求，对 URL 分析判断如果是 http 协议就按照 Web 方式来处理;
+    2、调用浏览器内核中的对应方法，比如 WebView 中的 loadUrl 方法;
+    3、通过DNS解析获取网址的IP地址，设置 UA 等信息发出第二个GET请求;
+    4、进行HTTP协议会话，客户端发送报头(请求报头);
+    5、进入到web服务器上的 Web Server，如 Apache、Tomcat、Node.JS 等服务器;
+    6、进入部署好的后端应用，如 PHP、Java、JavaScript、Python 等，找到对应的请求处理;
+    7、处理结束回馈报头，此处如果浏览器访问过，缓存上有对应资源，会与服务器最后修改时间对比，一致则返回304;
+    8、浏览器开始下载html文档(响应报头，状态码200)，同时使用缓存;
+    9、文档树建立，根据标记请求所需指定MIME类型的文件（比如css、js）,同时设置了cookie;
+    10、页面开始渲染DOM，JS根据DOM API操作DOM,执行事件绑定等，页面显示完成。
 
-```
-
-```
-*
-
-```
+  简洁版：
+    浏览器根据请求的URL交给DNS域名解析，找到真实IP，向服务器发起请求；
+    服务器交给后台处理完成后返回数据，浏览器接收文件（HTML、JS、CSS、图象等）；
+    浏览器对加载到的资源（HTML、JS、CSS等）进行语法解析，建立相应的内部数据结构（如HTML的DOM）；
+    载入解析到的资源文件，渲染页面，完成。
 
 ```
