@@ -1,4 +1,9 @@
 [阿里面试](https://zhuanlan.zhihu.com/p/26528397)
+
+1、prototype和__proto__的关系是什么
+[解析](https://www.zhihu.com/question/34183746)
+
+
 [html](#htm)
 
 [css](#css)
