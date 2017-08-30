@@ -205,7 +205,7 @@ localstorge另一个浏览上下文里被添加、修改或删除时，它都会
     规定从父元素继承 position 属性的值。
 ```
 [absolute和relative的区别](http://www.html-js.com/article/3044)
-https://jsbin.com/kuxahelohu/edit?html,css,output
+https://jsbin.com/sejekohuho/2/edit?html,css,output
 
 * 用纯CSS创建一个三角形的原理是什么？
 
