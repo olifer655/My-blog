@@ -124,7 +124,7 @@ localstorge另一个浏览上下文里被添加、修改或删除时，它都会
 
 ```
  (1）有两种， IE 盒子模型、W3C 盒子模型；
-（2）盒模型： 内容(content)、填充(padding)、边界(margin)、 边框(border)；
+（2）盒模型： 内容(content)、填充(padding)、边框(border)、边界(margin)；
 （3）区  别： IE的content部分把 border 和 padding计算了进去;
 
 ```
