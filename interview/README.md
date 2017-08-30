@@ -54,7 +54,8 @@
 
 ```
 在用户没有与因特网连接时，可以正常访问站点或应用，在用户与因特网连接时，更新用户机器上的缓存文件。
-原理：HTML5的离线存储是基于一个新建的.appcache文件的缓存机制(不是存储技术)，通过这个文件上的解析清单离线存储资源，这些资源就会像cookie一样被存储了下来。之后当网络在处于离线状态下时，浏览器会通过被离线存储的数据进行页面展示。
+原理：HTML5的离线存储是基于一个新建的.appcache文件的缓存机制(不是存储技术)，通过这个文件上的解析清单离线存储资源，
+这些资源就会像cookie一样被存储了下来。之后当网络在处于离线状态下时，浏览器会通过被离线存储的数据进行页面展示。
 
 
 如何使用：
@@ -74,8 +75,10 @@
    / /offline.html
 3、在离线状态时，操作window.applicationCache进行需求实现。
 
-在线的情况下，浏览器发现html头部有manifest属性，它会请求manifest文件，如果是第一次访问app，那么浏览器就会根据manifest文件的内容下载相应的资源并且进行离线存储。如果已经访问过app并且资源已经离线存储了，那么浏览器就会使用离线的资源加载页面，然后浏览器会对比新的manifest文件与旧的manifest文件，如果文件没有发生改变，就不做任何操作，如果文件改变了，那么就会重新下载文件中的资源并进行离线存储。
-离线的情况下，浏览器就直接使用离线存储的资源。
+在线的情况下，浏览器发现html头部有manifest属性，它会请求manifest文件，如果是第一次访问app，那么浏览器就会根
+据manifest文件的内容下载相应的资源并且进行离线存储。如果已经访问过app并且资源已经离线存储了，那么浏览器就会使
+用离线的资源加载页面，然后浏览器会对比新的manifest文件与旧的manifest文件，如果文件没有发生改变，就不做任何操
+作，如果文件改变了，那么就会重新下载文件中的资源并进行离线存储。离线的情况下，浏览器就直接使用离线存储的资源。
 
 ```
 详细的使用请参考：
@@ -204,7 +207,8 @@ https://jsbin.com/kuxahelohu/edit?html,css,output
 ```
 W3C CSS 2.1 规范中的一个概念,它是一个独立容器，决定了元素如何对其内容进行定位,以及与其他元素的关系和相互作用。）
  一个页面是由很多个 Box 组成的,元素的类型和 display 属性,决定了这个 Box 的类型。
- 不同类型的 Box,会参与不同的 Formatting Context（决定如何渲染文档的容器）,因此Box内的元素会以不同的方式渲染,也就是说BFC内部的元素和外部的元素不会互相影响。
+ 不同类型的 Box,会参与不同的 Formatting Context（决定如何渲染文档的容器）,因此Box内的元素会以不同的方式渲染,也
+ 就是说BFC内部的元素和外部的元素不会互相影响。
 ```
 * css多列等高如何实现
 
@@ -262,7 +266,8 @@ select:autofill {
 fixed的元素是相对整个页面固定位置的，你在屏幕上滑动只是在移动这个所谓的viewport，
 原来的网页还好好的在那，fixed的内容也没有变过位置，
 所以说并不是iOS不支持fixed，只是fixed的元素不是相对手机屏幕固定的。
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, 
+maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
 
 ```
 * 如果需要手动写动画，你认为最小时间间隔是多久，为什么？
@@ -334,7 +339,8 @@ Object 是 JavaScript 中所有对象的父对象
 关系：instance.constructor.prototype = instance.__proto__
 
 特点：
-JavaScript对象是通过引用来传递的，我们创建的每个新对象实体中并没有一份属于自己的原型副本。当我们修改原型时，与之相关的对象也会继承这一改变。
+JavaScript对象是通过引用来传递的，我们创建的每个新对象实体中并没有一份属于自己的原型副本。当我们修改原型时，
+与之相关的对象也会继承这一改变。
 
 
  当我们需要一个属性的时，Javascript引擎会先看当前对象中是否有这个属性， 如果没有的话，
@@ -426,8 +432,8 @@ Javascript从来不会将变量设为null。它是用来让程序员表明某个
 
 typeof undefined
     //"undefined"
-    undefined :是一个表示"无"的原始值或者说表示"缺少值"，就是此处应该有一个值，但是还没有定义。当尝试读取时会返回 undefined； 
-    例如变量被声明了，但没有赋值时，就等于undefined
+    undefined :是一个表示"无"的原始值或者说表示"缺少值"，就是此处应该有一个值，但是还没有定义。
+    当尝试读取时会返回 undefined； 例如变量被声明了，但没有赋值时，就等于undefined
 
 typeof null
     //"object"
@@ -476,7 +482,9 @@ Base.call(obj);
 ```
 hasOwnProperty
 
-javaScript中hasOwnProperty函数方法是返回一个布尔值，指出一个对象是否具有指定名称的属性。此方法无法检查该对象的原型链中是否具有该属性；该属性必须是对象本身的一个成员。
+javaScript中hasOwnProperty函数方法是返回一个布尔值，指出一个对象是否具有指定名称的属性。此方法无法检查该对象的原
+型链中是否具有该属性；该属性必须是对象本身的一个成员。
+
 使用方法：
 object.hasOwnProperty(proName)
 其中参数object是必选项。一个对象的实例。
