@@ -1,4 +1,7 @@
+[WebSocket 是什么原理？为什么可以实现持久连接？](https://www.zhihu.com/question/20215561)
+
 [阿里面试](https://zhuanlan.zhihu.com/p/26528397)
+
 [html](#htm)
 
 [css](#css)
