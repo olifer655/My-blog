@@ -131,6 +131,11 @@ localstorge另一个浏览上下文里被添加、修改或删除时，它都会
 当设置为box-sizing:content-box时，将采用 W3C 盒子模型解析计算；
 当设置为box-sizing:inherit时，规定应从父元素继承 box-sizing 属性的值。
 
+盒模型的使用场景：
+设置子类元素的margin或者border时，可能会撑破父层元素的尺寸，这时我就需要使用box-sizing: border-box来将border包含进元素的尺寸中，这样就不会存在撑破父层元素的情况了
+
+[例如](http://www.jianshu.com/p/3375b15f568f)
+
 ```
 * CSS3新增伪类有那些？
 
