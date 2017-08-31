@@ -466,7 +466,8 @@ alert(demo.name);//得到被继承的属性
 ```
 * 谈谈This对象的理解
 
-* this总是指向函数的直接调用者（而非间接调用者）；
+this总是指向函数的直接调用者（而非间接调用者）；
+
 [this](https://github.com/olifer655/My-blog/issues/8)
 
 * 如果有new关键字，this指向new出来的那个对象；
