@@ -89,13 +89,13 @@
 用离线的资源加载页面，然后浏览器会对比新的manifest文件与旧的manifest文件，如果文件没有发生改变，就不做任何操
 作，如果文件改变了，那么就会重新下载文件中的资源并进行离线存储。离线的情况下，浏览器就直接使用离线存储的资源。
 
-```
+
 详细的使用请参考：
 
 [HTML5 离线缓存-manifest简介](http://yanhaijing.com/html/2014/12/28/html5-manifest/)
 
 [有趣的HTML5：离线存储](https://segmentfault.com/a/1190000000732617)
-
+```
 * HTML5的form如何关闭自动完成功能？
 
 ```
@@ -193,6 +193,7 @@ localstorge另一个浏览上下文里被添加、修改或删除时，它都会
 ```
 
 * div+css实现未知宽高元素垂直水平居中
+```
   [方式一](https://www.bbsmax.com/A/nAJvkeD35r/)
 ```
 * position的值relative和absolute定位原点是？
