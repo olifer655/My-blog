@@ -362,6 +362,25 @@ maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
 }
 
 <h2 id="js">js</h2>
+```
+* zoom:1的清除浮动原理?
+
+```
+清除浮动，触发hasLayout；
+Zoom属性是IE浏览器的专有属性，它可以设置或检索对象的缩放比例。解决ie下比较奇葩的bug。
+譬如外边距（margin）的重叠，浮动清除，触发ie的haslayout属性等。
+
+来龙去脉大概如下：
+当设置了zoom的值之后，所设置的元素就会就会扩大或者缩小，高度宽度就会重新计算了，这里一旦改变zoom值时其实也会发生重新渲染，
+运用这个原理，也就解决了ie下子元素浮动时候父元素不随着自动扩大的问题。
+
+Zoom属是IE浏览器的专有属性，火狐和老版本的webkit核心的浏览器都不支持这个属性。然而，zoom现在已经被逐步标准化，出现在
+CSS 3.0 规范草案中。
+
+目前非ie由于不支持这个属性，它们又是通过什么属性来实现元素的缩放呢？
+可以通过css3里面的动画属性scale进行缩放。
+
+```
 
 * 介绍js的基本数据类型。
 
@@ -378,8 +397,9 @@ Object 是 JavaScript 中所有对象的父对象
 数据封装类对象：Object、Array、Boolean、Number 和 String
 其他对象：Function、Arguments、Math、Date、RegExp、Error
 
-```
 [参考文档](http://www.ibm.com/developerworks/cn/web/wa-objectsinjs-v1b/index.html)
+
+```
 
 * JavaScript原型，原型链 ? 有什么特点？
 
@@ -392,7 +412,6 @@ Object 是 JavaScript 中所有对象的父对象
 特点：
 JavaScript对象是通过引用来传递的，我们创建的每个新对象实体中并没有一份属于自己的原型副本。当我们修改原型时，
 与之相关的对象也会继承这一改变。
-
 
  当我们需要一个属性的时，Javascript引擎会先看当前对象中是否有这个属性， 如果没有的话，
  就会查找他的Prototype对象是否有这个属性，如此递推下去，一直检索到 Object 内建对象。
@@ -444,13 +463,12 @@ var demo = new Child();
 alert(demo.age);
 alert(demo.name);//得到被继承的属性
 
-
 ```
 * 谈谈This对象的理解
 
-	* this总是指向函数的直接调用者（而非间接调用者）；
-	* 如果有new关键字，this指向new出来的那个对象；
-	* 在事件中，this指向触发这个事件的对象，特殊的是，IE中的attachEvent中的this总是指向全局对象Window；
+* this总是指向函数的直接调用者（而非间接调用者）；
+* 如果有new关键字，this指向new出来的那个对象；
+* 在事件中，this指向触发这个事件的对象，特殊的是，IE中的attachEvent中的this总是指向全局对象Window；
 
 * eval是做什么的？
 
@@ -513,8 +531,9 @@ typeof null
 ```
 * IE与火狐的事件机制有什么区别？ 如何阻止冒泡？
 
-	* 事件处理机制：IE是事件冒泡、Firefox同时支持捕获型和冒泡型两种事件模型；
-	* ev.stopPropagation();（旧ie的方法 ev.cancelBubble = true;）
+* 事件处理机制：IE是事件冒泡、Firefox同时支持捕获型和冒泡型两种事件模型；
+
+* ev.stopPropagation();（旧ie的方法 ev.cancelBubble = true;）
 	
 * new操作符具体干了什么呢?
 
