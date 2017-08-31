@@ -191,6 +191,10 @@ localstorge另一个浏览上下文里被添加、修改或删除时，它都会
 	}  
 
 ```
+
+* div+css实现未知宽高元素垂直水平居中
+  [方式一](https://www.bbsmax.com/A/nAJvkeD35r/)
+```
 * position的值relative和absolute定位原点是？
 
 ```
