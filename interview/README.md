@@ -302,6 +302,25 @@ fixed的元素是相对整个页面固定位置的，你在屏幕上滑动只是
 maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
 
 ```
+* position:fixed;在iOS下无效怎么处理？
+
+```css
+软键盘唤起后，页面的 fixed 元素将失效（即无法浮动，也可以理解为变成了 absolute 定位），所以当页面超过一屏且滚动时，失效的 fixed 元素就会跟随滚动了。
+
+既然在 iOS 下由于软键盘唤出后，页面 fixed 元素会失效，导致跟随页面一起滚动，那么假如——页面不会过长出现滚动，那么即便 fixed
+元素失效，也无法跟随页面滚动，也就不会出现上面的问题了。按照这个思路，如果使 fixed 元素的父级不出现滚动，而将原 body 滚动的
+区域域移到 main 内部，而 header 和 footer 的样式不变。
+
+ main {
+    /* main绝对定位，进行内部滚动 */
+    position: absolute;
+    top: 50px;
+    bottom: 34px;
+    /* 使之可以滚动 */
+    overflow-y: scroll;
+}
+```
+
 * 如果需要手动写动画，你认为最小时间间隔是多久，为什么？
 
 ```
