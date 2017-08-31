@@ -208,9 +208,11 @@ localstorge另一个浏览上下文里被添加、修改或删除时，它都会
     默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right z-index 声明）。
   inherit
     规定从父元素继承 position 属性的值。
+    
+  [absolute和relative的区别](http://www.html-js.com/article/3044)
+  https://jsbin.com/sejekohuho/2/edit?html,css,output
+  
 ```
-[absolute和relative的区别](http://www.html-js.com/article/3044)
-https://jsbin.com/sejekohuho/2/edit?html,css,output
 
 * 用纯CSS创建一个三角形的原理是什么？
 
