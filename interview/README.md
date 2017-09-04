@@ -238,6 +238,8 @@ W3C CSS 2.1 规范中的一个概念,它是一个独立容器，决定了元素�
  一个页面是由很多个 Box 组成的,元素的类型和 display 属性,决定了这个 Box 的类型。
  不同类型的 Box,会参与不同的 Formatting Context（决定如何渲染文档的容器）,因此Box内的元素会以不同的方式渲染,也
  就是说[BFC](https://segmentfault.com/a/1190000009429179)内部的元素和外部的元素不会互相影响。
+ 
+ https://www.zhihu.com/question/37208845
 ```
 * css多列等高如何实现
 
