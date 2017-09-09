@@ -240,18 +240,18 @@ img{
 }
 
 ```
-* 对
-
-规范(块级格式化上下文：block formatting context)的理解？
+* 对块级格式化上下文(block formatting context)的理解？
 
 ```
 W3C CSS 2.1 规范中的一个概念,它是一个独立容器，决定了元素如何对其内容进行定位,以及与其他元素的关系和相互作用。）
  一个页面是由很多个 Box 组成的,元素的类型和 display 属性,决定了这个 Box 的类型。
  不同类型的 Box,会参与不同的 Formatting Context（决定如何渲染文档的容器）,因此Box内的元素会以不同的方式渲染,也
- 就是说[BFC](https://segmentfault.com/a/1190000009429179)内部的元素和外部的元素不会互相影响。
- 
- https://www.zhihu.com/question/37208845
+ 就是说BFC内部的元素和外部的元素不会互相影响。
+
 ```
+https://www.zhihu.com/question/37208845
+[BFC](https://segmentfault.com/a/1190000009429179)
+
 * css多列等高如何实现
 
 [参考文档](http://codepen.io/yangbo5207/post/equh)
