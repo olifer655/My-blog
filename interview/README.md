@@ -122,9 +122,18 @@ localstorge另一个浏览上下文里被添加、修改或删除时，它都会
 ```
 
 <h2 id="css">css</h2>
+* HTML/HTML5 设置img(图片)自适应div(容器)
+```css
+img{
+ width:auto;
+ height:auto;
+ max-width:100%;
+ max-height:100%;
+}
+```
+[详解](https://www.xttblog.com/?p=1472)
+
 * 介绍一下标准的CSS的盒子模型？低版本IE的盒子模型有什么不同的？
-
-
 ```
  (1）有两种， IE 盒子模型、W3C 盒子模型；
 （2）盒模型： 内容(content)、填充(padding)、边框(border)、边界(margin)；
