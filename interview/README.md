@@ -191,25 +191,18 @@ div {
    left: 50%;
    transform: translate(-50%, -50%);
 }
+// flex
+.container {
+    display: flex; 
+    align-items: center;        /* 垂直居中 */
+    justify-content: center;    /* 水平居中 */
+}
 	
-（三）
-	.container {
-    	display: flex; 
-    	align-items: center;        /* 垂直居中 */
-    	justify-content: center;    /* 水平居中 */
-	}
-	
-	.container div {
-    	width: 100px;
-    	height: 100px;
-	}  
-
+.container div {
+    width: 100px;
+    height: 100px;
+}  
 ```
-
-* div+css实现未知宽高元素垂直水平居中
-
-  [方式一](https://www.bbsmax.com/A/nAJvkeD35r/)
-  
 * position的值relative和absolute定位原点是？
 
 ```
