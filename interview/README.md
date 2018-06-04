@@ -498,13 +498,13 @@ document对象是Documentd对象（HTML 文档对象）的一个只读引用，w
 * null，undefined 的区别？
 
 ```
+typeof(null) //object 
+typeof(undefined) //undefined
+
 null        表示一个对象是“没有值”的值，也就是值为“空”；
 undefined   表示一个变量声明了没有初始化(赋值)；
 
 undefined不是一个有效的JSON，而null是；
-undefined的类型(typeof)是undefined；
-null的类型(typeof)是object；
-
 
 Javascript将未赋值的变量默认值设为undefined；
 Javascript从来不会将变量设为null。它是用来让程序员表明某个用var声明的变量时没有值的。
