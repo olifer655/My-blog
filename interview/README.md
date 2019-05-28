@@ -1,10 +1,3 @@
-[WebSocket 是什么原理？为什么可以实现持久连接？](https://www.zhihu.com/question/20215561)
-
-> 其实我们所用的程序是要经过两层代理的，即`HTTP协议`在`Nginx`等服务器的解析下，然后再传送给相应的`Handler`（PHP等）来处理。简单地说，我们有一个非常快速的`接线员（Nginx）`，他负责把问题转交给相应的`客服（Handler）`。本身接线员基本上速度是足够的，但是每次都卡在`客服（Handler）`了，老有客服处理速度太慢。，导致客服不够。`Websocket`就解决了这样一个难题，建立后，可以直接跟接线员建立持久连接，有信息的时候客服想办法通知接线员，然后`接线员`在统一转交给客户。这样就可以解决客服处理速度过慢的问题了。
-
-> 同时，在传统的方式上，要`不断的建立`，关闭HTTP协议，由于HTTP是非状态性的，每次都要重新传输`identity info（鉴别信息）`，来告诉服务端你是谁。虽然接线员很快速，但是每次都要听这么一堆，效率也会有所下降的，同时还得不断把这些信息转交给客服，不但浪费客服的处理时间，而且还会在网路传输中消耗过多的流量/时间。但是Websocket只需要一次HTTP握手，所以说整个通讯过程是建立在一次连接/状态中，也就避免了HTTP的非状态性，服务端会一直知道你的信息，直到你关闭请求，这样就解决了接线员要反复解析HTTP协议，还要查看identity info的信息。同时由客户主动询问，转换为服务器（推送）有信息的时候就发送（当然客户端还是等主动发送信息过来的。。），没有信息的时候就交给接线员（Nginx），不需要占用本身速度就慢的客服（Handler）了。
-[WebSocket](http://www.ruanyifeng.com/blog/2017/05/websocket.html)
-
 [babelrc](https://zhuanlan.zhihu.com/p/24224107)
 
 [阿里面试](https://zhuanlan.zhihu.com/p/26528397)
@@ -16,8 +9,18 @@
 [css](#css)
 
 [js](#js)
+[WebSocket](#WebSocket)
 
 [其他](#其他)
+
+<h2 id="WebSocket"></h2>
+
+[WebSocket 是什么原理？为什么可以实现持久连接？](https://www.zhihu.com/question/20215561)
+
+> 其实我们所用的程序是要经过两层代理的，即`HTTP协议`在`Nginx`等服务器的解析下，然后再传送给相应的`Handler`（PHP等）来处理。简单地说，我们有一个非常快速的`接线员（Nginx）`，他负责把问题转交给相应的`客服（Handler）`。本身接线员基本上速度是足够的，但是每次都卡在`客服（Handler）`了，老有客服处理速度太慢。，导致客服不够。`Websocket`就解决了这样一个难题，建立后，可以直接跟接线员建立持久连接，有信息的时候客服想办法通知接线员，然后`接线员`在统一转交给客户。这样就可以解决客服处理速度过慢的问题了。
+
+> 同时，在传统的方式上，要`不断的建立`，关闭HTTP协议，由于HTTP是非状态性的，每次都要重新传输`identity info（鉴别信息）`，来告诉服务端你是谁。虽然接线员很快速，但是每次都要听这么一堆，效率也会有所下降的，同时还得不断把这些信息转交给客服，不但浪费客服的处理时间，而且还会在网路传输中消耗过多的流量/时间。但是Websocket只需要一次HTTP握手，所以说整个通讯过程是建立在一次连接/状态中，也就避免了HTTP的非状态性，服务端会一直知道你的信息，直到你关闭请求，这样就解决了接线员要反复解析HTTP协议，还要查看identity info的信息。同时由客户主动询问，转换为服务器（推送）有信息的时候就发送（当然客户端还是等主动发送信息过来的。。），没有信息的时候就交给接线员（Nginx），不需要占用本身速度就慢的客服（Handler）了。
+[WebSocket](http://www.ruanyifeng.com/blog/2017/05/websocket.html)
 
 <h2 id="html">html</h2>
 
@@ -137,11 +140,11 @@ img{
 
 * 介绍一下标准的CSS的盒子模型？低版本IE的盒子模型有什么不同的？
 ```
- (1）有两种， IE 盒子模型、W3C 盒子模型；
+ (1）有两种， IE 盒子模型、W3C 标准盒子模型；
 （2）盒模型： 内容(content)、填充(padding)、边框(border)、边界(margin)；
-（3）区  别： IE的content部分把 border 和 padding计算了进去;
+（3）区  别： 标准盒子模型content部分把 border 和 padding计算进盒子宽中;
 
-当设置为box-sizing:border-box时，将采用怪异模式解析计算；
+当设置为box-sizing:border-box时，将采用怪异模式解析计算（IE 盒子模型）；
 当设置为box-sizing:content-box时，将采用 W3C 盒子模型解析计算；
 当设置为box-sizing:inherit时，规定应从父元素继承 box-sizing 属性的值。
 
@@ -172,7 +175,7 @@ img{
 * 如何让 div 水平垂直居中？
 
 ```css
-// 确定容器的宽高, 宽500 高 300 的层设置层的外边距
+// 容器本身是确定的宽高, 宽500 高 300 的层设置层的外边距
 div {
    position: relative;        /* 相对定位或绝对定位均可 */
    width:500px;
@@ -191,6 +194,32 @@ div {
    left: 50%;
    transform: translate(-50%, -50%);
 }
+//盒子宽高可以随意更改，也就是盒子宽高不固定的居中方式
+<style>
+	div{
+		position: relative;
+        	height: 500px;
+      		width: 500px;
+      		background: yellow;
+	 }
+	 .inner{
+		position: absolute;
+		margin: auto;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+         	height: 100px;
+       		width: 100px;
+       		background: red;
+	 }
+</style>
+<div>
+	<div class="inner">
+		
+	</div>
+</div>
+
 // flex
 .container {
     display: flex; 
@@ -207,11 +236,11 @@ div {
 
 ```
   absolute
-    生成绝对定位的元素，相对于值不为 static的第一个父元素进行定位（原文档流中的位置不做保留）。
+    生成绝对定位的元素，定位原点是离自己这一级元素最近的一级position设置为absolute或者relative的父元素的左上角为原点的。（原文档流中的位置不做保留）。
   fixed （老IE不支持）
     生成绝对定位的元素，相对于浏览器窗口进行定位。
   relative
-    生成相对定位的元素，相对于其正常位置进行定位（原文档流中的位置依然保留）。
+    生成相对定位的元素，定位原点是元素本身所在位置。（原文档流中的位置依然保留）。
   static
     默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right z-index 声明）。
   inherit
